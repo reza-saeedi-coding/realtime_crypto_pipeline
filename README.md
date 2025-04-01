@@ -2,13 +2,13 @@
 
 This project fetches real-time cryptocurrency prices (Bitcoin & Ethereum), saves them with timestamps, and visualizes the price trends over time using Python.
 
-##  Dataset
+## Dataset
 - **Source**: [CoinGecko API](https://www.coingecko.com/en/api)
 - **Data Format**: JSON file updated every 15 seconds during the run
 
 ---
 
-## 🛠 Tools & Libraries Used
+## Tools & Libraries Used
 - **Python**: Core programming language
 - **Requests**: For API calls
 - **Datetime & Time**: For timestamps and delays
@@ -17,7 +17,7 @@ This project fetches real-time cryptocurrency prices (Bitcoin & Ethereum), saves
 
 ---
 
-##  Project Workflow
+## Project Workflow
 1. **Fetch Data**: Grabs real-time Bitcoin and Ethereum prices
 2. **Add Timestamps**: Attaches current UTC time to each data point
 3. **Save to JSON**: Appends each fetch into a single `.json` file
@@ -25,7 +25,7 @@ This project fetches real-time cryptocurrency prices (Bitcoin & Ethereum), saves
 
 ---
 
-##  File Structure
+## File Structure
 ```
 crypto_price_tracker/
 ├── ingestion/
@@ -42,9 +42,9 @@ crypto_price_tracker/
 
 ---
 
-##  How to Run
-1. Clone the repo
-2. Install requirements (requests, matplotlib)
+## How to Run
+1. Clone the repository
+2. Install the requirements (e.g., requests, matplotlib)
 3. Run `test_ingestion.py` to begin fetching live data
 4. After a few minutes, run `plot_prices.py` to see price trends
 
@@ -56,7 +56,7 @@ python plot_prices.py     # Shows the chart
 
 ---
 
-##  What You’ll Learn
+## What You'll Learn
 - Real-time API integration with Python
 - Data transformation using custom functions
 - JSON data storage and time-based appending
@@ -64,16 +64,14 @@ python plot_prices.py     # Shows the chart
 
 ---
 
-##  Project Status
-**Complete (V1)** — Ready for portfolio and internship applications.
+## Project Status
+**Complete** — This version is ready for portfolio use and internship applications.
 
 ---
 
-##  Author
-Project built and maintained step-by-step for hands-on learning and practical portfolio building.
+## Author
+This project was built step-by-step for practical learning and hands-on portfolio building.
 
 ---
 
-You can now track, store, and visualize real-time Bitcoin price movements!
-
----
+You can now track, store, and visualize real-time Bitcoin price movements using your own custom-built data pipeline.
