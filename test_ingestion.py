@@ -2,25 +2,36 @@ from ingestion.crypto_data_ingestor import CryptoDataIngestor
 from storage.json_writer import save_to_json
 from processing.transformer import add_timestamp
 import time
+
+# Configuration
+FETCH_COUNT = 500           # Number of price fetches to perform
+DELAY_SECONDS = 15          # Time delay between fetches in seconds
+
+# Initialize the ingestor
 ingestor = CryptoDataIngestor(
     base_url="https://api.coingecko.com/api/v3/simple/price",
     currencies=["bitcoin", "ethereum"],
     vs_currency="usd"
 )
-while True:
-    # Fetch raw data
-    data = ingestor.fetch_prices()
-    print("\nRaw data:")
-    print(data)
 
-    # Add timestamp to the data
-    processed_data = add_timestamp(data)
-    print("\nData with timestamp:")
-    print(processed_data)
+# Main fetch loop
+for i in range(FETCH_COUNT):
+    print(f"\nFetching prices... ({i + 1}/{FETCH_COUNT})")
 
-    # Save processed data
-    save_to_json(processed_data)
-    print("\nData saved to JSON.")
+    try:
+        raw_data = ingestor.fetch_prices()
 
-    # Wait 10 sec before the next fetch
-    time.sleep(10)
+        if not raw_data:
+            print("No valid data received. Skipping this round.")
+            time.sleep(DELAY_SECONDS)
+            continue
+
+        data_with_timestamp = add_timestamp(raw_data)
+        save_to_json(data_with_timestamp)
+
+        print(f"Fetched & saved at {data_with_timestamp['timestamp']}")
+
+    except Exception as e:
+        print(f"Error during iteration {i + 1}: {e}")
+
+    time.sleep(DELAY_SECONDS)
